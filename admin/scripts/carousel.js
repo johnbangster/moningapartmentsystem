@@ -1,0 +1,100 @@
+
+
+let carousel_s_form = document.getElementById('carousel_s_form');
+let carousel_picture_inp = document.getElementById('carousel_picture_inp');
+
+carousel_s_form.addEventListener('submit', function(e){
+    e.preventDefault();
+    add_image();
+});
+
+function alert(type,msg)
+{
+    let bs_class = (type == "success") ? "alert-success" : "alert-danger";
+    let element = document.createElement('div');
+    element.innerHTML =`
+        <div class="alert ${bs_class} alert-dismissible fade show custom-alert" role="alert">
+            <strong class="me-3">${msg}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    document.body.append(element);
+}
+
+function add_image()
+{
+    let data = new FormData();
+    data.append('picture',carousel_picture_inp.files[0]);
+    data.append('add_image', '');
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST","ajax/carousel_crud.php",true);
+
+    //to view data in dashboard settings
+    xhr.onload = function(){
+        var myModal = document.getElementById('carousel-s');
+        var modal = bootstrap.Modal.getInstance(myModal);
+        modal.hide();
+        
+        if(this.responseText == 'inv_img')
+        {
+            alert('error', 'Only JPG and PNG images are allowed!');
+        }
+        else if(this.responseText == 'inv_size')
+        {
+            alert('error', 'Image should be less than 2MB!');
+        }
+        else if(this.responseText == 'upd_failed')
+        {
+            alert('error', 'Image upload failed. Server down!');
+        }else{
+            alert('success', 'New image added!');
+            carousel_picture_inp.value='';
+            get_carousel();
+
+        }
+        
+    }
+
+    xhr.send(data);
+
+}
+
+function get_carousel()
+{
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST","ajax/carousel_crud.php",true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    //to view data in dashboard settings
+    xhr.onload = function(){
+        document.getElementById('carousel-data').innerHTML = this.responseText;
+    }
+    xhr.send('get_carousel');
+}
+
+function rem_image(val)
+{
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST","ajax/carousel_crud.php",true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    //to view data in dashboard settings
+    xhr.onload = function(){
+        if(this.responseText==1){
+            alert('error', 'Image removed!');
+            get_carousel();
+        }
+        else{
+            alert('error', 'Server Down!');
+        }
+        
+    }
+    
+    xhr.send('rem_image='+val);
+}
+
+
+window.onload = function(){
+    get_carousel();
+}

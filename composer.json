@@ -1,0 +1,13 @@
+{
+    "name": "moningsrental/project",
+    "description": "Monings Rental Management System",
+    "authors": [
+        {
+            "name": "Che Uy"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^5.1",
+        "kickstartph/semaphore-client": "^0.2.0"
+    }
+}

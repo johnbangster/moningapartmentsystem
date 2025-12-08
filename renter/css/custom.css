@@ -1,0 +1,64 @@
+
+:root
+{
+  --teal: #2ec1ac;
+  --teal_hover: #279e8c;
+}
+
+*{
+  font-family: "Poppins", sans-serif;
+}
+  
+.h-font{
+  font-family: "Merienda", cursive;
+}
+  
+/* remove arrow number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+/* Firefox */
+input[type=number] {
+-moz-appearance: textfield;
+}
+
+.custom-bg{
+  background-color: var(--teal);
+  border: var(--teal);
+}
+
+.custom-bg:hover{
+  background-color: var(--teal_hover);
+  border-color: var(--teal_hover);
+}
+  
+.h-line{
+  width: 150px;
+  margin: 0 auto;
+  height: 1.7px;
+}
+
+.custom-alert{
+position: fixed;
+top: 25px;
+right: 25px;
+}
+
+.checkout .form-control{
+    border-radius: 0px !important;
+}
+.checkout .form-control:focus{
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+}
+.checkout .nav-link{
+    border: 1px solid #000;
+    border-radius: 0px;
+    margin-bottom: 8px;
+}
+.checkout .tab-content{
+    padding-right: 10px;
+}
+

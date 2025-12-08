@@ -1,0 +1,5 @@
+[24-Nov-2025 01:03:56 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'unit_name' in 'field list' in C:\xampp\htdocs\moningsrental\save_reservation.php:72
+Stack trace:
+#0 C:\xampp\htdocs\moningsrental\save_reservation.php(72): mysqli_query(Object(mysqli), '\r\n    INSERT IN...')
+#1 {main}
+  thrown in C:\xampp\htdocs\moningsrental\save_reservation.php on line 72
