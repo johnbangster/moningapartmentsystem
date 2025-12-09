@@ -163,7 +163,7 @@ if (isset($_SESSION['auth_user'])) {
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="profile.php">My Profile</a></li>
                     <li>
-                        <form action="../../../moningsrental/allcode.php" method="POST">
+                        <form action="/logout.php" method="POST">
                             <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
                         </form>
                     </li>
