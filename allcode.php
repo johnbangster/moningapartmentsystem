@@ -29,8 +29,8 @@ if ($is_logout_request) {
     session_start();
     $_SESSION['message'] = 'Logged out successfully';
 
-    // Redirect to the public live login page
-    header('Location: https://moningsrentalservice.com/login.php');
+    // Redirect to login.php using a relative path for better compatibility
+    header('Location: /login.php');
     exit;
 }
 
