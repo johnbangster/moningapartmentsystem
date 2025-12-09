@@ -9,7 +9,7 @@ if (isset($_POST['login_btn'])) {
     // Validate empty fields
     if (empty($email) || empty($password)) {
         $_SESSION['message'] = "Email and password are required.";
-        header("Location: login.php");
+        header("Location: /login.php");
         exit();
     }
 
@@ -46,7 +46,7 @@ if (isset($_POST['login_btn'])) {
                     $_SESSION['auth_user']['renter_id'] = $renterData['id'];
                 } else {
                     $_SESSION['message'] = "Renter profile not found. Contact support.";
-                    header("Location: login.php");
+                    header("Location: /login.php");
                     exit();
                 }
             }
@@ -64,7 +64,7 @@ if (isset($_POST['login_btn'])) {
                     break;
                 default:
                     $_SESSION['message'] = "Invalid user role.";
-                    header("Location: login.php");
+                    header("Location: /login.php");
                     break;
             }
             exit();
@@ -72,18 +72,18 @@ if (isset($_POST['login_btn'])) {
         } else {
             // Incorrect password
             $_SESSION['message'] = "Invalid email or password.";
-            header("Location: login.php");
+            header("Location: /login.php");
             exit();
         }
     } else {
         // No user found or inactive
         $_SESSION['message'] = "Invalid email or inactive account.";
-        header("Location: login.php");
+        header("Location: /login.php");
         exit();
     }
 } else {
     $_SESSION['message'] = "Unauthorized access!";
-    header("Location: login.php");
+    header("Location: /login.php");
     exit();
 }
 ?>

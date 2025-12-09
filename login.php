@@ -1,4 +1,3 @@
-
 <?php
     session_start();
     
@@ -8,7 +7,7 @@
                     
             $_SESSION['message'] = "You are already logged In";
         }
-        header("Location: login.php");
+        header("Location: /login.php");
         exit(0);
     }
 

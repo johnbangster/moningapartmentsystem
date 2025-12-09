@@ -6,7 +6,7 @@ require ('includes/header.php');
 // Check if the user is logged in by verifying the session variable
 if (!isset($_SESSION['auth_user']['user_id'])) {
     // Redirect to login page if the user is not logged in
-    header("Location: login.php");
+    header("Location: /login.php");
     exit;
 }
 
