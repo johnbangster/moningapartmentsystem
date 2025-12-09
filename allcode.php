@@ -29,8 +29,12 @@ if ($is_logout_request) {
     session_start();
     $_SESSION['message'] = 'Logged out successfully';
 
-    // Redirect to login.php using a relative path for better compatibility
-    header('Location: /login.php');
+    // Try both absolute and relative redirect for maximum compatibility
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/login.php')) {
+        header('Location: /login.php');
+    } else {
+        header('Location: https://moningsrentalservice.com/login.php');
+    }
     exit;
 }
 
